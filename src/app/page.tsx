@@ -1,101 +1,74 @@
-import Image from "next/image";
+"use client"
 
-export default function Home() {
+interface Window {
+  ethereum?: {
+    isMetaMask?: boolean;
+    request: (args: { method: string; params?: any[] }) => Promise<any>;
+    on?: (eventName: string, callback: (...args: any[]) => void) => void;
+  };
+}
+
+import { useState } from 'react'
+import { Button } from "./components/ui/button"
+import { Input } from "./components/ui/input"
+import { Label } from "./components/ui/label"
+import { RadioGroup, RadioGroupItem } from "./components/ui/radio-group"
+import { ConnectWallet } from './components/connect-wallet'
+import { TimeSelection } from './components/time-selection'
+import { BetPlacement } from './components/bet-placement'
+import ChessGame1 from './components/ChessGame'
+import { LampDemo } from './components/ui/lamp'
+//import WalletConnect from './components/connect-wallet'
+
+export default function ChessGame() {
+  const [step, setStep] = useState(1)
+  const [walletConnected, setWalletConnected] = useState(false)
+  const [selectedTime, setSelectedTime] = useState('')
+  const [betAmount, setBetAmount] = useState('')
+
+  const handleWalletConnect = () => {
+    // In a real implementation, this would handle the actual wallet connection
+    setWalletConnected(true)
+    setStep(2)
+  }
+
+  const handleTimeSelect = (time: string) => {
+    setSelectedTime(time)
+    setStep(3)
+  }
+
+  const handleBetPlace = (amount: string) => {
+    setBetAmount(amount)
+    setStep(4)
+  }
+
+  const startMatch = () => {
+
+    // In a real implementation, this would start the chess match
+    console.log('Starting match with:', { selectedTime, betAmount })
+  }
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+    <div className="min-h-screen bg-gradient-to-r from-gray-700 via-gray-900 to-black flex items-center justify-center">
+      <LampDemo/>
+      <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
+        <h1 className="text-2xl font-bold mb-6 text-center">CHESS-ing by QUANTA</h1>
+        
+        {step === 1 && <ConnectWallet onConnect={handleWalletConnect} />}
+        
+        {step === 2 && <TimeSelection onSelect={handleTimeSelect} />}
+        
+        {step === 3 && <BetPlacement onBetPlace={handleBetPlace} />}
+        
+        {step === 4 && (
+          <div className="text-center">
+            <h2 className="text-xl font-semibold mb-4">Ready to Play!</h2>
+            <p className="mb-2">Time Limit: {selectedTime} minutes</p>
+            <p className="mb-4">Bet Amount: {betAmount} ETH</p>
+            <ChessGame1 />
+          </div>
+        )}
+      </div>
     </div>
-  );
+  )
 }
