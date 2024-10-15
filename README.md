@@ -1,36 +1,20 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏆 On-Chain Chess with Betting System ♟️
 
-## Getting Started
+An Ethereum-based on-chain chess game powered by **Scroll L2**. This project allows players to engage in chess matches and place bets on the outcome of the games, all while leveraging the scalability and low transaction costs of Scroll L2.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **On-Chain Chess**: Every move is recorded on-chain, ensuring transparency and fairness.
+- **Betting System**: Players and spectators can place bets on the outcomes of chess matches.
+- **Scroll L2 Integration**: Built on the Scroll Layer 2 network for faster and cheaper transactions, while inheriting Ethereum’s security.
+- **Smart Contract Logic**: Manages game rules, bet settlements, and player winnings autonomously.
+- **No Central Authority**: Fully decentralized—players control their assets and game outcomes directly through smart contracts.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📜 Prerequisites
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Before running this project, ensure you have the following installed:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Node.js](https://nodejs.org/)
+- [Hardhat](https://hardhat.org/)
+- [MetaMask](https://metamask.io/) (configured for Scroll L2)
+- [Scroll L2 Testnet tokens](https://scroll.io/faucet)"# chess-ing" 
