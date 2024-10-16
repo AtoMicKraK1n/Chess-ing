@@ -18,3 +18,7 @@ Before running this project, ensure you have the following installed:
 - [Hardhat](https://hardhat.org/)
 - [MetaMask](https://metamask.io/) (configured for Scroll L2)
 - [Scroll L2 Testnet tokens](https://scroll.io/faucet)"# chess-ing" 
+
+## You can find us here!
+
+- [Our website](https://chess-ing.vercel.app)
